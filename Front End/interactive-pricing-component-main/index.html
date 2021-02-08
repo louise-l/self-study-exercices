@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style/index.css">
+  
+  <title>🌻 Dynamic price 🌻</title>
+</head>
+<body>
+  <header>
+    <h1>Simple, traffic-based pricing</h1> 
+    <h3>Sign-up for our 30-day trial. No credit card required.</h3>
+  </header>
+
+
+  <div class="offer-box">
+    <div class="pageviews center-box">
+      <p class="uppercase" ><span id ="pageviewtext">100K</span> Pageviews</p> 
+    </div>
+    <div class="price center-box">
+      <p>$ <span id="pricetext">16</span> /month</p>
+      
+    </div>
+    <div class="slide center-box">
+      <input id = "slider" type="range" min="1" max="5">
+    </div>
+    <div class="billing">
+      <span>Monthly Billing</span> 
+      <span>
+        <label class="switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+      </span>
+      <span id = "discount-text">
+        Yearly Billing 
+        <div id = "discount-amount">25% discount</div>
+         
+      </span>
+
+
+    </div>
+
+    <div class="check center-box">
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="9" height="8"><path fill="none" stroke="#10D8C4" stroke-width="2" d="M1 4.134l1.907 1.908L7.949 1"/></svg> 
+        Unlimited websites </p> 
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="9" height="8"><path fill="none" stroke="#10D8C4" stroke-width="2" d="M1 4.134l1.907 1.908L7.949 1"/></svg> 
+        100% data ownership</p> 
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="9" height="8"><path fill="none" stroke="#10D8C4" stroke-width="2" d="M1 4.134l1.907 1.908L7.949 1"/></svg> 
+        Email reports</p> 
+    </div>
+
+    <div class="start center-box">
+    <div class="button">Start my trial</div>  
+      
+    </div>
+  </div>
+  
+</body>
+<script>
+  const pageHandler = (event) => {
+    pageviews.innerHTML=''
+    price.innerHTML=''
+    const offer = cursor.value
+    monthlyprice = priceHandler(offer)
+
+    if (offer === "1") {
+      pageviews.insertAdjacentHTML('afterbegin', '10K')
+      price.insertAdjacentHTML('beforeend', monthlyprice)
+    } else if (offer === "2") {
+      pageviews.insertAdjacentHTML('afterbegin', '50K')
+      price.insertAdjacentHTML('beforeend', monthlyprice)
+    } else if (offer === "3") {
+      pageviews.insertAdjacentHTML('afterbegin', '100K')
+      price.insertAdjacentHTML('beforeend', monthlyprice)
+    }else if (offer === "4") {
+      pageviews.insertAdjacentHTML('afterbegin', '500K')
+      price.insertAdjacentHTML('beforeend', monthlyprice)
+    }else if (offer === "5") {
+      pageviews.insertAdjacentHTML('afterbegin', '1M')
+      price.insertAdjacentHTML('beforeend', monthlyprice)
+
+    }
+  }
+
+  const priceHandler = (offer) => {
+    let price = 0
+    console.log(discount)
+    if (offer === "1"){
+      price = 8
+    } else if (offer === "2") {
+      price = 12 
+    }else if (offer === "3") {
+      price = 16 
+    }else if (offer === "4") {
+      price = 24
+    }else if (offer === "5") {
+      price = 36 
+    }
+    monthcursor.checked === true ? discount.style.display = "inline" : discount.style.display = "none"
+    monthcursor.checked === true ? price = price*0.75 : price = price
+    return price
+  }
+
+  const cursor = document.querySelector("#slider")
+  const pageviews = document.querySelector("#pageviewtext")
+  const price = document.querySelector("#pricetext")
+  const monthcursor = document.querySelector("#checkbox")
+  const discount = document.querySelector("#discount-amount")
+
+  cursor.addEventListener("change", (e)=> pageHandler(e))
+  monthcursor.addEventListener("change", (e)=> pageHandler(e))
+
+</script>
+</html>

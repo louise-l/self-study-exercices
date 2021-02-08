@@ -1,0 +1,38 @@
+@media (max-width: 450px){
+    body{
+        width: 70%;
+        font-size: 12px;
+    }
+    .offer-box{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 15% 15% 15% 15% 25% 15%;
+        height: 100vh;
+        margin-bottom: 50px;
+    }
+
+    .pageviews{
+        grid-row: 1;
+    }
+
+    .slide{
+        grid-row: 2;
+    }
+
+    .price{
+        grid-row: 3;
+    }
+
+    .billing{
+        grid-row: 4;
+    }
+    .check{
+        grid-row: 5;
+        display: flex;
+        align-items: center;
+        padding: 0;
+    }
+    .start{
+        grid-row: 6;
+    }
+}
